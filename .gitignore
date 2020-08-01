@@ -1,0 +1,7 @@
+node_modules
+dist
+build
+upload
+.env
+.cache
+.idea
