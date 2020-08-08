@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { BroadcastList } from './BroadcastList'
+import { BroadcastListPage } from '../pages/BroadcastListPage'
 import { Broadcast } from './types'
 import { AxiosResponse } from 'axios'
-import { Broadcast as BroadcastComponent } from './Broadcast'
+import { BroadcastPage } from '../pages/BroadcastPage'
 
 type Props = {}
 
@@ -21,7 +21,7 @@ export const Application: React.FC<Props> = () => {
 
   if (selectedBroadcastId) {
     return (
-      <BroadcastComponent
+      <BroadcastPage
         id={selectedBroadcastId}
         onBack={() => {
           setSelectedBroadcastId(undefined)
@@ -31,7 +31,7 @@ export const Application: React.FC<Props> = () => {
   }
 
   return (
-    <BroadcastList
+    <BroadcastListPage
       onSelectBroadcast={(id) => {
         setSelectedBroadcastId(id)
       }}
