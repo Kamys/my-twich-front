@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react'
 import 'video.js/dist/video-js.min.css'
 import videojs from 'video.js'
-import { getBroadcastsUrl } from '../helpers'
+import { getBroadcastsPosterUrl, getBroadcastsUrl } from '../helpers'
 import { Broadcast } from '../components/Broadcast'
 
 type Props = {
@@ -35,7 +35,10 @@ export const BroadcastPage: React.FC<Props> = ({ id, onBack }) => {
   return (
     <div>
       <button onClick={onBack}>Back</button>
-      <Broadcast url={getBroadcastsUrl(id)} />
+      <Broadcast
+        url={getBroadcastsUrl(id)}
+        poster={getBroadcastsPosterUrl(id)}
+      />
     </div>
   )
 }

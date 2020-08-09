@@ -13,16 +13,22 @@ import { Broadcast } from '../components/Broadcast'
 
 type Props = {
   url: string
+  poster: string
   name: string
   onClick: () => void
 }
 
-export const BroadcastCard: React.FC<Props> = ({ url, name, onClick }) => {
+export const BroadcastCard: React.FC<Props> = ({
+  url,
+  name,
+  poster,
+  onClick,
+}) => {
   return (
     <Card>
       <CardActionArea>
         <Box width={600}>
-          <Broadcast url={url} />
+          <Broadcast url={url} poster={poster} />
         </Box>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">

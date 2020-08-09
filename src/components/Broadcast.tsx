@@ -4,13 +4,14 @@ import videojs from 'video.js'
 
 type Props = {
   url: string
+  poster: string
 }
 
-export const Broadcast: React.FC<Props> = ({ url }) => {
+export const Broadcast: React.FC<Props> = ({ url, poster }) => {
   const ref = React.useRef(null)
 
   const videoJsOptions = {
-    autoplay: true,
+    autoplay: false,
     controls: true,
     paused: true,
     sources: [
@@ -20,6 +21,7 @@ export const Broadcast: React.FC<Props> = ({ url }) => {
       },
     ],
     fluid: true,
+    poster,
   }
 
   useLayoutEffect(() => {
