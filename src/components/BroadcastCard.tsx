@@ -9,21 +9,16 @@ import {
   makeStyles,
   Box,
 } from '@material-ui/core'
-import { Broadcast } from '../components/Broadcast'
+import { Broadcast } from './Broadcast'
+import { Link } from 'react-router-dom'
 
 type Props = {
   url: string
   poster: string
   name: string
-  onClick: () => void
 }
 
-export const BroadcastCard: React.FC<Props> = ({
-  url,
-  name,
-  poster,
-  onClick,
-}) => {
+export const BroadcastCard: React.FC<Props> = ({ url, name, poster }) => {
   return (
     <Card>
       <CardActionArea>
@@ -40,9 +35,11 @@ export const BroadcastCard: React.FC<Props> = ({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={onClick} size="small" color="primary">
-          Watch
-        </Button>
+        <Link to={`/${name}`}>
+          <Button size="small" color="primary">
+            Watch
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   )

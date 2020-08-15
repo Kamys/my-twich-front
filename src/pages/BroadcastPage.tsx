@@ -6,10 +6,9 @@ import { Broadcast } from '../components/Broadcast'
 
 type Props = {
   id: string
-  onBack: () => void
 }
 
-export const BroadcastPage: React.FC<Props> = ({ id, onBack }) => {
+export const BroadcastPage: React.FC<Props> = ({ id }) => {
   const ref = React.useRef(null)
 
   const videoJsOptions = {
@@ -34,7 +33,6 @@ export const BroadcastPage: React.FC<Props> = ({ id, onBack }) => {
 
   return (
     <div>
-      <button onClick={onBack}>Back</button>
       <Broadcast
         url={getBroadcastsUrl(id)}
         poster={getBroadcastsPosterUrl(id)}

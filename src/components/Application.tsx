@@ -4,11 +4,11 @@ import { BroadcastListPage } from '../pages/BroadcastListPage'
 import { Broadcast } from './types'
 import { AxiosResponse } from 'axios'
 import { BroadcastPage } from '../pages/BroadcastPage'
+import { Route, Switch } from 'react-router-dom'
 
 type Props = {}
 
 export const Application: React.FC<Props> = () => {
-  const [selectedBroadcastId, setSelectedBroadcastId] = useState<string>()
   const [broadcasts, setBroadcast] = useState<Broadcast[]>([])
 
   useEffect(() => {
@@ -19,23 +19,15 @@ export const Application: React.FC<Props> = () => {
       })
   }, [])
 
-  if (selectedBroadcastId) {
-    return (
-      <BroadcastPage
-        id={selectedBroadcastId}
-        onBack={() => {
-          setSelectedBroadcastId(undefined)
-        }}
-      />
-    )
-  }
-
   return (
-    <BroadcastListPage
-      onSelectBroadcast={(id) => {
-        setSelectedBroadcastId(id)
-      }}
-      broadcasts={broadcasts}
-    />
+    <Switch>
+      <Route exact path="/">
+        <BroadcastListPage broadcasts={broadcasts} />
+      </Route>
+      <Route
+        path="/:userName"
+        render={(props) => <BroadcastPage id={props.match.params.userName} />}
+      />
+    </Switch>
   )
 }
